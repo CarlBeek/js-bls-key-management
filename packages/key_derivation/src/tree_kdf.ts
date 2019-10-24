@@ -1,9 +1,10 @@
 import {BigNumber, BitArray} from "sjcl";
 import sjcl from "sjcl";
+import { hkdf } from "./crypto";
 
 
 function IKM_to_lamport_SK(IKM: BitArray, salt: BitArray): Array<BitArray> {
-    const OKM: BitArray = sjcl.misc.hkdf(IKM, 8160*8, salt);
+    const OKM: BitArray = hkdf(IKM, 8160, salt);
     const bytes_split = (arr: BitArray) => Array.from(new Array(255), (_, i) => arr.slice(i*8, (i+1)*8));
     return bytes_split(OKM);
 }
@@ -24,7 +25,7 @@ function parent_SK_to_lamport_PK(parent_SK: BigNumber, index: BigNumber): BitArr
 
 
 function HKDF_mod_r(IKM: BitArray): BigNumber {
-    const OKM: BitArray = sjcl.misc.hkdf(IKM, 48*8, 'BLS-SIG-KEYGEN-SALT-');
+    const OKM: BitArray = hkdf(IKM, 48, 'BLS-SIG-KEYGEN-SALT-');
     const bn_OKM: BigNumber = sjcl.bn.fromBits(OKM);
     const r = new sjcl.bn('0x73eda753299d7d483339d80809a1d80553bda402fffe5bfeffffffff00000001');
     return bn_OKM.mod(r)
