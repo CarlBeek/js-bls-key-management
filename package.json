@@ -1,4 +1,8 @@
 {
+  "name": "BLS Key Management",
+  "author": "Carl Beekhuizen",
+  "repository": "https://github.com/CarlBeek/js-bls-key-management",
+  "license": "CC0-1.0",
   "scripts": {
     "test": "jest",
     "coverage": "jest --coverage"
