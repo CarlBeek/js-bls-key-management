@@ -8,14 +8,14 @@
     "coverage": "jest --coverage"
   },
   "dependencies": {
-    "@types/node": "^12.11.2"
+    "futoin-hkdf": "^1.2.1",
+    "sjcl": "^1.0.8"
   },
   "devDependencies": {
+    "@types/node": "^12.11.2",
     "@types/jest": "^24.0.19",
     "@types/sjcl": "^1.0.28",
-    "futoin-hkdf": "^1.2.1",
     "jest": "^24.9.0",
-    "sjcl": "^1.0.8",
     "ts-jest": "^24.1.0",
     "typescript": "^3.6.4"
   }
