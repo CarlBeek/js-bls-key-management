@@ -1,9 +1,17 @@
 {
   "name": "bls-key-management",
+  "version": "0.0.1",
   "author": "Carl Beekhuizen",
   "repository": "https://github.com/CarlBeek/js-bls-key-management",
   "license": "CC0-1.0",
+  "main": "lib/tree_kdf.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
+    "clean": "rm -rf lib",
+    "prebuild": "npm run clean",
+    "build": "tsc --outDir lib --project tsconfig.build.json",
     "test": "jest",
     "coverage": "jest --coverage"
   },
